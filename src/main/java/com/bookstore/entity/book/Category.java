@@ -2,9 +2,6 @@ package com.bookstore.entity.book;
 
 import jakarta.persistence.*;
 import lombok.*;
-
-import java.util.Set;
-
 @Entity
 @Table(name = "CATEGORIES")
 @Data

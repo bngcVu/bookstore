@@ -4,8 +4,6 @@ import com.bookstore.entity.book.Book;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.math.BigDecimal;
-
 @Entity
 @Table(name = "CART_ITEMS")
 @Data

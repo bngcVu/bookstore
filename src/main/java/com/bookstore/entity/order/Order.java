@@ -1,7 +1,6 @@
 package com.bookstore.entity.order;
 
 import com.bookstore.entity.user.User;
-import com.bookstore.entity.user.UserAddress;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
