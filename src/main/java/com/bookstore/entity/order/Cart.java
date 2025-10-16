@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 import java.util.Set;
 
 @Entity
-@Table(name = "carts")
+@Table(name = "CARTS")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -25,8 +25,7 @@ public class Cart {
     @JoinColumn(name = "user_id")
     private User user;
     
-    @Column(name = "session_id", length = 100)
-    private String sessionId;
+    
     
     @CreationTimestamp
     @Column(name = "created_at")

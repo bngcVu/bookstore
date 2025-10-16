@@ -8,7 +8,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "notifications")
+@Table(name = "NOTIFICATIONS")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -24,16 +24,8 @@ public class Notification {
     @JoinColumn(name = "user_id")
     private User user;
     
-    @Column(name = "title", length = 150)
-    private String title;
-    
     @Column(name = "message", columnDefinition = "TEXT")
     private String message;
-    
-    @Enumerated(EnumType.STRING)
-    @Column(name = "type")
-    @Builder.Default
-    private NotificationType type = NotificationType.SYSTEM;
     
     @Column(name = "is_read")
     @Builder.Default
@@ -43,7 +35,5 @@ public class Notification {
     @Column(name = "created_at")
     private LocalDateTime createdAt;
     
-    public enum NotificationType {
-        ORDER, PROMOTION, SYSTEM
-    }
+    
 }

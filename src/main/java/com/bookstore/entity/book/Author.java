@@ -7,7 +7,7 @@ import java.time.LocalDate;
 import java.util.Set;
 
 @Entity
-@Table(name = "authors")
+@Table(name = "AUTHORS")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -19,18 +19,7 @@ public class Author {
     @Column(name = "author_id")
     private Integer authorId;
     
-    @Column(name = "name", nullable = false, length = 100)
+    @Column(name = "name", length = 150)
     private String name;
     
-    @Column(name = "bio", columnDefinition = "TEXT")
-    private String bio;
-    
-    @Column(name = "dob")
-    private LocalDate dob;
-    
-    @Column(name = "nationality", length = 100)
-    private String nationality;
-    
-    @OneToMany(mappedBy = "author", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Set<Book> books;
 }

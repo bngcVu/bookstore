@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Table(name = "book_images")
+@Table(name = "BOOK_IMAGES")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -22,8 +22,5 @@ public class BookImage {
     
     @Column(name = "image_url")
     private String imageUrl;
-    
-    @Column(name = "is_primary")
-    @Builder.Default
-    private Boolean isPrimary = false;
+
 }

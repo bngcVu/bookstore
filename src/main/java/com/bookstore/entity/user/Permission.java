@@ -6,7 +6,7 @@ import lombok.*;
 import java.util.Set;
 
 @Entity
-@Table(name = "permissions")
+@Table(name = "PERMISSIONS")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -18,11 +18,8 @@ public class Permission {
     @Column(name = "permission_id")
     private Integer permissionId;
     
-    @Column(name = "name", nullable = false, length = 100)
-    private String name;
-    
-    @Column(name = "description")
-    private String description;
+    @Column(name = "permission_name", nullable = false, length = 100, unique = true)
+    private String permissionName;
     
     @ManyToMany(mappedBy = "permissions")
     private Set<Role> roles;

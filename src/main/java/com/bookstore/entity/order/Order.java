@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 import java.util.Set;
 
 @Entity
-@Table(name = "orders")
+@Table(name = "ORDERS")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -31,28 +31,16 @@ public class Order {
     @Column(name = "order_date")
     private LocalDateTime orderDate;
     
-    @Column(name = "status", length = 50)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status")
     @Builder.Default
-    private String status = "PENDING";
+    private Status status = Status.PENDING;
     
     @Column(name = "total_amount", precision = 12, scale = 2)
     private BigDecimal totalAmount;
     
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "shipping_id")
-    private Shipping shipping;
-    
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "payment_id")
-    private Payment payment;
-    
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "address_id")
-    private UserAddress address;
-    
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<OrderDetail> orderDetails;
-    
-    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Set<OrderStatusHistory> statusHistory;
+
+    public enum Status { PENDING, CONFIRMED, SHIPPED, COMPLETED, CANCELLED }
 }

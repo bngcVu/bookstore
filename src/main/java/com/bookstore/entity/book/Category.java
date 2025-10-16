@@ -6,7 +6,7 @@ import lombok.*;
 import java.util.Set;
 
 @Entity
-@Table(name = "categories")
+@Table(name = "CATEGORIES")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -18,12 +18,7 @@ public class Category {
     @Column(name = "category_id")
     private Integer categoryId;
     
-    @Column(name = "name", nullable = false, length = 100)
+    @Column(name = "name", length = 150)
     private String name;
     
-    @Column(name = "description", columnDefinition = "TEXT")
-    private String description;
-    
-    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Set<Book> books;
 }

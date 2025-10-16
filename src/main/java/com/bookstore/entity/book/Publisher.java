@@ -6,7 +6,7 @@ import lombok.*;
 import java.util.Set;
 
 @Entity
-@Table(name = "publishers")
+@Table(name = "PUBLISHERS")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -18,18 +18,7 @@ public class Publisher {
     @Column(name = "publisher_id")
     private Integer publisherId;
     
-    @Column(name = "name", nullable = false, length = 100)
+    @Column(name = "name", length = 150)
     private String name;
     
-    @Column(name = "address")
-    private String address;
-    
-    @Column(name = "phone", length = 20)
-    private String phone;
-    
-    @Column(name = "email", length = 100)
-    private String email;
-    
-    @OneToMany(mappedBy = "publisher", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Set<Book> books;
 }

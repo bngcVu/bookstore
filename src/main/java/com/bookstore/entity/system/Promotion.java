@@ -9,7 +9,7 @@ import java.time.LocalDate;
 import java.util.Set;
 
 @Entity
-@Table(name = "promotions")
+@Table(name = "PROMOTIONS")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -21,18 +21,14 @@ public class Promotion {
     @Column(name = "promotion_id")
     private Integer promotionId;
     
-    @Column(name = "name", nullable = false, length = 100)
+    @Column(name = "name", length = 150)
     private String name;
     
     @Column(name = "description", columnDefinition = "TEXT")
     private String description;
     
-    @Enumerated(EnumType.STRING)
-    @Column(name = "discount_type", nullable = false)
-    private DiscountType discountType;
-    
-    @Column(name = "discount_value", nullable = false, precision = 10, scale = 2)
-    private BigDecimal discountValue;
+    @Column(name = "discount_percent", precision = 5, scale = 2)
+    private BigDecimal discountPercent;
     
     @Column(name = "start_date")
     private LocalDate startDate;
@@ -40,19 +36,11 @@ public class Promotion {
     @Column(name = "end_date")
     private LocalDate endDate;
     
-    @Column(name = "is_active")
-    @Builder.Default
-    private Boolean isActive = true;
-    
     @ManyToMany
     @JoinTable(
-        name = "promotion_books",
+        name = "BOOK_PROMOTIONS",
         joinColumns = @JoinColumn(name = "promotion_id"),
         inverseJoinColumns = @JoinColumn(name = "book_id")
     )
     private Set<Book> books;
-    
-    public enum DiscountType {
-        PERCENT, FIXED
-    }
 }

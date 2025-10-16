@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 import java.util.Set;
 
 @Entity
-@Table(name = "reviews")
+@Table(name = "REVIEWS")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -40,9 +40,5 @@ public class Review {
     @Column(name = "created_at")
     private LocalDateTime createdAt;
     
-    @OneToMany(mappedBy = "review", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Set<ReviewReply> replies;
     
-    @OneToMany(mappedBy = "review", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Set<ReviewFeedback> feedbacks;
 }

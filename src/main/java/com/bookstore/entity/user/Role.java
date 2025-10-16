@@ -6,7 +6,7 @@ import lombok.*;
 import java.util.Set;
 
 @Entity
-@Table(name = "roles")
+@Table(name = "ROLES")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -18,18 +18,15 @@ public class Role {
     @Column(name = "role_id")
     private Integer roleId;
     
-    @Column(name = "role_name", nullable = false, length = 50)
+    @Column(name = "role_name", nullable = false, length = 100, unique = true)
     private String roleName;
-    
-    @Column(name = "description")
-    private String description;
     
     @OneToMany(mappedBy = "role", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<User> users;
     
     @ManyToMany
     @JoinTable(
-        name = "role_permissions",
+        name = "ROLE_PERMISSIONS",
         joinColumns = @JoinColumn(name = "role_id"),
         inverseJoinColumns = @JoinColumn(name = "permission_id")
     )

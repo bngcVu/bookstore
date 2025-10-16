@@ -9,7 +9,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "inventory_logs")
+@Table(name = "INVENTORY_LOGS")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -18,30 +18,20 @@ public class InventoryLog {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "inventory_id")
-    private Integer inventoryId;
+    @Column(name = "log_id")
+    private Integer logId;
     
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "book_id")
     private Book book;
     
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "warehouse_id")
-    private Warehouse warehouse;
-    
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "supplier_id")
-    private Supplier supplier;
-    
     @Enumerated(EnumType.STRING)
-    @Column(name = "action_type", nullable = false)
-    private ActionType actionType;
+    @Column(name = "change_type", nullable = false)
+    private ChangeType changeType;
     
     @Column(name = "quantity_change", nullable = false)
     private Integer quantityChange;
     
-    @Column(name = "note")
-    private String note;
     
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "created_by")
@@ -51,7 +41,5 @@ public class InventoryLog {
     @Column(name = "created_at")
     private LocalDateTime createdAt;
     
-    public enum ActionType {
-        IMPORT, EXPORT, ADJUST
-    }
+    public enum ChangeType { IMPORT, EXPORT, ADJUST }
 }

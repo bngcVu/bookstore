@@ -7,7 +7,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "user_addresses")
+@Table(name = "USER_ADDRESSES")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -23,17 +23,23 @@ public class UserAddress {
     @JoinColumn(name = "user_id")
     private User user;
     
-    @Column(name = "label", length = 50)
-    private String label;
+    @Column(name = "recipient_name", length = 150)
+    private String recipientName;
     
-    @Column(name = "address_detail")
-    private String addressDetail;
+    @Column(name = "phone_number", length = 20)
+    private String phoneNumber;
+    
+    @Column(name = "address_line")
+    private String addressLine;
     
     @Column(name = "city", length = 100)
     private String city;
     
     @Column(name = "province", length = 100)
     private String province;
+    
+    @Column(name = "postal_code", length = 20)
+    private String postalCode;
     
     @Column(name = "is_default")
     @Builder.Default
